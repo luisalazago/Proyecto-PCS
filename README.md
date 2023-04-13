@@ -12,5 +12,5 @@ Producto de Software La empresa **XYZ** necesita registrar sus ventas en un port
 
 ### Enlace al repositorio del sistema
 
-El sistema se encuntra alojado en el siguiente repositorio:
+El sistema se encuentra alojado en el siguiente repositorio:
 https://github.com/luisalazago/MiniProyecto-PDS
