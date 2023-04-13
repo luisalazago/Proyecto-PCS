@@ -9,3 +9,8 @@ Para este proyecto se está utilizando un sistema de ventas que tiene back-end, 
 ### Descripción del Sistema
 
 Producto de Software La empresa **XYZ** necesita registrar sus ventas en un portal/app, la cual almacena la informaci ́on en una base de datos. Requiere también poder visualizar al finalizar el día un reporte de las ventas de este.
+
+### Enlace al repositorio del sistema
+
+El sistema se encuentra alojado en el siguiente repositorio:
+https://github.com/luisalazago/MiniProyecto-PDS
