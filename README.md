@@ -8,4 +8,4 @@ Para este proyecto se está utilizando un sistema de ventas que tiene back-end, 
 
 ### Descripción del Sistema
 
-Producto de Software La empresa XYZ necesita registrar sus ventas en un portal/app, la cual almacena la informaci ́on en una base de datos. Requiere también poder visualizar al finalizar el día un reporte de las ventas de este.
+Producto de Software La empresa **XYZ** necesita registrar sus ventas en un portal/app, la cual almacena la informaci ́on en una base de datos. Requiere también poder visualizar al finalizar el día un reporte de las ventas de este.
