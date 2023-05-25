@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "87c9ce40-8e8e-4303-8e6d-75c3aa82e349",
+		"name": "Inventario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25813072"
+	},
+	"item": [
+		{
+			"name": "Traer inventario de todos los productos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Definir URL base para las pruebas\r",
+							"var url = \"http://127.0.0.1:5000\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Mostrar información de todos los productos\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/inventario/des_inventario/todos_productos\",\r",
+							"        method: 'GET',\r",
+							"        header: {\r",
+							"            'Content-Type': 'text/html'\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 200);\r",
+							"        pm.expect(res.text()).to.include('Extraído');\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/inventario/des_inventario/todos_productos",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"inventario",
+						"des_inventario",
+						"todos_productos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Traer inventario de un solo producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Definir URL base para las pruebas\r",
+							"var url = \"http://127.0.0.1:5000\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Mostrar información de un producto\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/inventario/des_inventario/un_producto\",\r",
+							"       method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_producto', value: \"202001\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 200);\r",
+							"        pm.expect(res.text()).to.include('Carnes');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mostrar información de un producto\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/inventario/des_inventario/un_producto\",\r",
+							"       method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_producto', value: \"201000\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 200);\r",
+							"        pm.expect(res.text()).to.include('Bebidas');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mostrar información de un producto\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/inventario/des_inventario/un_producto\",\r",
+							"       method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_producto', value: \"205000\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 200);\r",
+							"        pm.expect(res.text()).to.include('Lacteos');\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_producto",
+							"value": "202001",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/inventario/des_inventario/un_producto",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"inventario",
+						"des_inventario",
+						"un_producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inventario de producto inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Definir URL base para las pruebas\r",
+							"var url = \"http://127.0.0.1:5000\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Mostrar información de un producto inexistente\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/inventario/des_inventario/un_producto\",\r",
+							"       method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_producto', value: \"1234\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 200);\r",
+							"        pm.expect(res.text()).to.include('correcto');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mostrar información de un producto inexistente\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/inventario/des_inventario/un_producto\",\r",
+							"       method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_producto', value: \"ascaca\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 500);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_producto",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/inventario/des_inventario/un_producto",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"inventario",
+						"des_inventario",
+						"un_producto"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

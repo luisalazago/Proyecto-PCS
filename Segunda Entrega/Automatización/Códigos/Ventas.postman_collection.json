@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "ae5dd79a-e094-4496-9860-ab89cfda36f7",
+		"name": "Ventas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25813072"
+	},
+	"item": [
+		{
+			"name": "Agregar producto a una venta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Definir URL base para las pruebas\r",
+							"var url = \"http://localhost:5000\";\r",
+							"\r",
+							"pm.test(\"Agregar producto a venta\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/ventas/registro_ventas\",\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_productoVentas', value: \"202000\"},\r",
+							"                { key: 'cantidad_comprar', value: \"4\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 200);\r",
+							"        pm.expect(res.text()).to.include('Costilla');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Agregar producto a venta\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/ventas/registro_ventas\",\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_productoVentas', value: \"201000\"},\r",
+							"                { key: 'cantidad_comprar', value: \"3\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 200);\r",
+							"        pm.expect(res.text()).to.include('Smirnoff');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Agregar producto a venta\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/ventas/registro_ventas\",\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_productoVentas', value: \"205000\"},\r",
+							"                { key: 'cantidad_comprar', value: \"10\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 200);\r",
+							"        pm.expect(res.text()).to.include('Queso');\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_productoVentas",
+							"value": "202000",
+							"type": "text"
+						},
+						{
+							"key": "cantidad_comprar",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/ventas/registro_ventas",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"ventas",
+						"registro_ventas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Intentar agregar producto inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Definir URL base para las pruebas\r",
+							"var url = \"http://localhost:5000\";\r",
+							"\r",
+							"pm.test(\"Intentar agregar producto inexistente\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/ventas/registro_ventas\",\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_productoVentas', value: \"0987654asa\"},\r",
+							"                { key: 'cantidad_comprar', value: \"3\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 500);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Intentar agregar producto inexistente\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/ventas/registro_ventas\",\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_productoVentas', value: \"01231a987654asa\"},\r",
+							"                { key: 'cantidad_comprar', value: \"3\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 500);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Intentar agregar producto inexistente\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/ventas/registro_ventas\",\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'id_productoVentas', value: \"098765asdas4asa\"},\r",
+							"                { key: 'cantidad_comprar', value: \"3\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res){\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 500);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_productoVentas",
+							"value": "0987654",
+							"type": "text"
+						},
+						{
+							"key": "cantidad_comprar",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/ventas/registro_ventas",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"ventas",
+						"registro_ventas"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

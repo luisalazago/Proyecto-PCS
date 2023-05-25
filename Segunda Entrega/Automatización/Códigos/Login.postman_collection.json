@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "5ab4e9e9-aa47-45ab-a566-c3f0f6f3f68c",
+		"name": "Login",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25813072"
+	},
+	"item": [
+		{
+			"name": "Login Fallido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Definir URL base para las pruebas\r",
+							"var url = \"http://127.0.0.1:5000\";\r",
+							"\r",
+							"\r",
+							"// Prueba para verificar el endpoint de inicio de sesión\r",
+							"pm.test(\"Inicio de sesión fallido\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/home\",\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'user', value: \"0987654321\" },\r",
+							"                { key: 'contra', value:  \"4321\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res) {\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res.text()).to.include('existente');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user",
+							"value": "0987654321",
+							"type": "text"
+						},
+						{
+							"key": "contra",
+							"value": "4321",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/home",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Exitoso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Definir URL base para las pruebas\r",
+							"var url = \"http://localhost:5000\";\r",
+							"\r",
+							"\r",
+							"// Prueba para verificar el endpoint de inicio de sesión\r",
+							"pm.test(\"Inicio de sesión exitoso\", function() {\r",
+							"    pm.sendRequest({\r",
+							"        url: url + \"/home\",\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'urlencoded',\r",
+							"            urlencoded: [\r",
+							"                { key: 'user', value: \"1000000000\"},\r",
+							"                { key: 'contra', value:  \"1234\"}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, function(err, res) {\r",
+							"        pm.expect(err).to.be.null;\r",
+							"        pm.expect(res).to.have.property('code', 200);\r",
+							"        pm.expect(res.text()).to.include('Bienvenide');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user",
+							"value": "1000000000",
+							"type": "text"
+						},
+						{
+							"key": "contra",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/home",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"home"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
